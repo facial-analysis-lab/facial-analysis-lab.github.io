@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="hr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Aeye</title></head>
+<body><p>Preusmjeravanje na prijavu…</p><script>
+  const path = location.pathname.replace(/\/+$/, '');
+  const route = path.split('/').pop();
+  const destination = route === 'homepage' ? 'homepage.html' : route === 'admin' ? 'admin.html' : 'index.html';
+  const base = route === 'homepage' || route === 'admin' ? path.slice(0, path.lastIndexOf('/') + 1) : '/';
+  location.replace(base + destination);
+</script><noscript>Za prijavu uključite JavaScript. <a href="index.html">Prijava</a></noscript></body></html>
