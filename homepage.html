@@ -29,16 +29,12 @@
     }
     </script>
   <link rel="stylesheet" href="public/app.css">
-  <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-  <script defer src="js/firebase-config.js"></script>
   <script defer src="js/auth.js"></script>
   </head>
   <body data-page="homepage">
   <p id="authStatus" class="access-status" role="status">Provjera pristupa…</p>
   <div id="protectedContent" hidden>
-  <header class="app-header"><a href="homepage.html" class="brand">Aeye<span>Prepoznavanje lica</span></a><div class="account-actions"><span id="accountEmail"></span><a id="adminLink" href="admin.html" hidden>Administracija</a><button id="logoutButton" type="button">Odjava</button></div></header>
+  <header class="app-header"><a href="homepage.html" class="brand">Aeye<span>Prepoznavanje lica</span></a><div class="account-actions"><button id="logoutButton" type="button">Odjava</button></div></header>
   <div class="center-content page-container">
 
     <h4>Analiza u stvarnom vremenu</h4><p class="app-intro">Dob, izrazi lica i procjena spola putem kamere.</p>

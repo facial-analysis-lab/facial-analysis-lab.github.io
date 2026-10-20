@@ -7,10 +7,6 @@
   <link rel="icon" href="data:,">
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="public/auth.css">
-  <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-  <script defer src="js/firebase-config.js"></script>
   <script defer src="js/auth.js"></script>
 </head>
 <body data-page="login">
@@ -20,23 +16,13 @@
       <p class="eyebrow">Diplomski projekt</p>
       <h1 id="formTitle">Dobro došli.</h1>
       <p id="formDescription">Prijavite se za pristup aplikaciji.</p>
-      <div class="tabs" role="group" aria-label="Pristup računu">
-        <button type="button" id="loginTab" aria-pressed="true">Prijava</button>
-        <button type="button" id="registerTab" aria-pressed="false">Registracija</button>
-      </div>
       <form id="authForm">
-        <div id="nameField" hidden><label for="fullName">Ime i prezime</label><input id="fullName" name="name" autocomplete="name" maxlength="100"></div>
-        <label for="email">E-mail adresa</label>
-        <input id="email" name="email" type="email" autocomplete="username" required maxlength="254" placeholder="ime@primjer.hr">
         <label for="password">Lozinka</label>
-        <input id="password" name="password" type="password" autocomplete="current-password" required minlength="6">
-        <p id="passwordHint" class="hint" hidden>Najmanje 6 znakova.</p>
-        <button class="primary" id="submitButton" type="submit" disabled>Prijavi se</button>
-        <button class="text-button" id="resetPassword" type="button" disabled>Zaboravljena lozinka?</button>
+        <input id="password" name="password" type="password" inputmode="numeric" autocomplete="off" required pattern="[0-9]{4}" minlength="4" maxlength="4" autofocus>
+        <button class="primary" id="submitButton" type="submit">Prijavi se</button>
       </form>
-      <p id="authStatus" class="status" role="status" aria-live="polite">Povezivanje…</p>
-      <div id="sessionActions" hidden><button class="primary" id="checkAccess" type="button">Provjeri odobrenje</button><button class="text-button" id="logoutButton" type="button">Odjava</button></div>
-      <p class="approval-note">Pristup imaju samo korisnici koje odobri administrator.</p>
+      <p id="authStatus" class="status" role="status" aria-live="polite"></p>
+      <p class="approval-note">Za pristup unesite dnevnu lozinku.</p>
     </section>
     <footer>Aeye · Analiza lica u stvarnom vremenu</footer>
   </main>
