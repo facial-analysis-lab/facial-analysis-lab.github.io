@@ -1,5 +1,10 @@
 # Dnevna lozinka
 
+## Privremeno otvoren pristup za predavanje 11. studenoga 2026.
+
+U `js/auth.js` je `AEYE_REQUIRE_PASSWORD = false`: index vodi izravno na aplikaciju i odjava je skrivena. Za povratak dnevne lozinke promijeni vrijednost na `true` i objavi izmjenu. Zaštita se ne vraća automatski sutra.
+
+
 Prijava traži samo četiri znamenke: zadnje dvije znamenke godine + dvoznamenkasti dan u mjesecu, prema vremenskoj zoni Europe/Zagreb. Primjer: 20. listopada 2026. → 2620; 8. listopada 2026. → 2608. Mjesec nije dio lozinke.
 
 Prijava vrijedi u trenutačnoj kartici do promjene dana ili odjave. Sesija sprema cijeli datum kako stara prijava ne bi postala valjana sljedeći mjesec. Izravan ulazak na homepage bez prijave vraća na index. Pri isteku sesije kamera se zaustavlja. Registracija i administracija više se ne koriste; stara admin adresa vraća na login.

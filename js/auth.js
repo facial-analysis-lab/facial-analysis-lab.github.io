@@ -1,4 +1,6 @@
 // A convenience gate for a static site, not server-side authentication.
+// Lecture mode: set to true and publish again to restore the daily password.
+const AEYE_REQUIRE_PASSWORD = false;
 window.aeyeHasAccess = false;
 window.aeyeAccessReady = new Promise((resolve, reject) => {
   window.resolveAeyeAccess = resolve;
@@ -10,6 +12,16 @@ window.aeyeAccessReady.catch(() => {});
   const sessionKey = 'aeye-daily-access';
   const page = document.body.dataset.page;
   const status = document.getElementById('authStatus');
+
+  if (!AEYE_REQUIRE_PASSWORD) {
+    if (page !== 'homepage') { location.replace('homepage.html'); return; }
+    window.aeyeHasAccess = true;
+    document.getElementById('protectedContent').hidden = false;
+    status.hidden = true;
+    document.getElementById('logoutButton').hidden = true;
+    window.resolveAeyeAccess();
+    return;
+  }
 
   function today() {
     const parts = new Intl.DateTimeFormat('en-GB', {
