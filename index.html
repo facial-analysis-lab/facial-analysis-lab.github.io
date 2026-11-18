@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Prijava · Aeye</title>
+  <title>Sign in · Aeye</title>
   <link rel="icon" href="data:,">
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="public/auth.css">
@@ -11,19 +11,19 @@
 </head>
 <body data-page="login">
   <main class="auth-shell">
-    <a class="brand" href="index.html">Aeye<span>Prepoznavanje lica</span></a>
+    <a class="brand" href="index.html">Aeye<span>Facial analysis</span></a>
     <section class="auth-card" aria-labelledby="formTitle">
-      <p class="eyebrow">Diplomski projekt</p>
-      <h1 id="formTitle">Dobro došli.</h1>
-      <p id="formDescription">Prijavite se za pristup aplikaciji.</p>
+      <p class="eyebrow">Graduate project</p>
+      <h1 id="formTitle">Welcome.</h1>
+      <p id="formDescription">Sign in to access the application.</p>
       <form id="authForm">
-        <input id="password" name="password" type="password" aria-label="Lozinka" inputmode="numeric" autocomplete="off" required pattern="[0-9]{4}" minlength="4" maxlength="4" autofocus>
-        <button class="primary" id="submitButton" type="submit">Prijavi se</button>
+        <input id="password" name="password" type="password" aria-label="Password" inputmode="numeric" autocomplete="off" required pattern="[0-9]{4}" minlength="4" maxlength="4" autofocus>
+        <button class="primary" id="submitButton" type="submit">Sign in</button>
       </form>
       <p id="authStatus" class="status" role="status" aria-live="polite"></p>
-      <p class="approval-note">Za pristup unesite dnevnu lozinku.</p>
+      <p class="approval-note">Enter the daily password to continue.</p>
     </section>
-    <footer>Aeye · Analiza lica u stvarnom vremenu</footer>
+    <footer>Aeye · Real-time facial analysis</footer>
   </main>
   <script>if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(console.error));</script>
 </body>

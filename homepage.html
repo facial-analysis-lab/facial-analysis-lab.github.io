@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aeye</title>
+  <title>Artificial Intelligence Testing · Aeye</title>
   <script src="dist/face-api.js"></script>
   <script src="js/commons.js"></script>
   <script src="js/faceDetectionControls.js"></script>
@@ -32,12 +32,12 @@
   <script defer src="js/auth.js"></script>
   </head>
   <body data-page="homepage">
-  <p id="authStatus" class="access-status" role="status">Provjera pristupa…</p>
+  <p id="authStatus" class="access-status" role="status">Checking access…</p>
   <div id="protectedContent" hidden>
-  <header class="app-header"><a href="homepage.html" class="brand">Aeye<span>Prepoznavanje lica</span></a><div class="account-actions"><button id="logoutButton" type="button">Odjava</button></div></header>
+  <header class="app-header"><a href="homepage.html" class="brand">Aeye<span>Facial analysis</span></a><div class="account-actions"><button id="logoutButton" type="button">Sign out</button></div></header>
   <div class="center-content page-container">
 
-    <h4>Umjetna inteligencija testiranje</h4><p class="app-intro">Dob, izrazi lica i procjena spola putem kamere.</p>
+    <h4>Artificial Intelligence Testing</h4><p class="app-intro">Camera-based age, facial expression and gender estimation.</p>
     
     <div class="progress" id="loader">
       <div class="indeterminate"></div>
@@ -67,7 +67,7 @@
     </div>
     
     <div id="backup-buttons" style="display: none; text-align: center; margin: 10px 0;">
-      <p style="font-weight: bold; color: red;">Ako ne vidite gumbe iznad, koristite ove:</p>
+      <p style="font-weight: bold; color: red;">If the buttons above are not visible, use these controls:</p>
       <a href="#" onclick="flipCamera(); return false;" style="display: inline-block; margin: 5px; padding: 8px 16px; background: blue; color: white; text-decoration: none; border-radius: 4px;">Flip Camera</a>
       <a href="#" onclick="toggleFullscreen(); return false;" style="display: inline-block; margin: 5px; padding: 8px 16px; background: green; color: white; text-decoration: none; border-radius: 4px;">Fullscreen</a>
       <a href="#" onclick="takeScreenshot(); return false;" style="display: inline-block; margin: 5px; padding: 8px 16px; background: purple; color: white; text-decoration: none; border-radius: 4px;">Screenshot</a>
@@ -105,8 +105,8 @@
 
     <div class="row side-by-side" style="margin-top: 20px;"> <!-- Added margin-top -->
       <div class="row" style="width: 220px; display: flex; align-items: center;">
-        <button id="hideBoundingBoxesBtn" class="visible-btn btn-blue" onclick="toggleBoundingBoxes()" style="min-width: 140px;">
-          Show Box
+        <button id="hideBoundingBoxesBtn" aria-pressed="true" class="visible-btn btn-blue" onclick="toggleBoundingBoxes()" style="min-width: 140px;">
+          Hide Box
         </button>
       </div>
 
@@ -114,7 +114,7 @@
         <div>
           <label for="time">Time:</label>
           <input disabled value="-" id="time" type="text" class="bold">
-          <label for="fps">Estimated Fps:</label>
+          <label for="fps">Estimated FPS:</label>
           <input disabled value="-" id="fps" type="text" class="bold">
         </div>
       </div>
@@ -124,7 +124,7 @@
       <div class="row side-by-side">
         <div class="row input-field" style="margin-right: 20px;">
           <select id="inputSize">
-            <option value="" disabled selected>Input Size:</option>
+            <option value="" disabled selected>Input size:</option>
             <option value="128">128 x 128 (Faster)</option>
             <option value="160">160 x 160</option>
             <option value="224">224 x 224 (Balanced)</option>
@@ -132,10 +132,10 @@
             <option value="416">416 x 416</option>
             <option value="512">512 x 512 (More accurate)</option>
           </select>
-          <label>Input Size</label>
+          <label>Input size</label>
         </div>
         <div class="row">
-          <label for="scoreThreshold">Score Threshold:</label>
+          <label for="scoreThreshold">Score threshold:</label>
           <input disabled value="0.5" id="scoreThreshold" type="text" class="bold">
         </div>
         <button
@@ -158,7 +158,7 @@
   </div>
   <script>
     let forwardTimes = [];
-    let withBoxes = false;
+    let withBoxes = true;
     let predictedAges = [];
     let isCameraFlipped = false;
     let currentStream = null;
@@ -538,7 +538,7 @@
       
       context.font = '14px Arial';
       context.fillStyle = 'white';
-      context.fillText(`Aeye - ${new Date().toLocaleString()}`, 10, 20);
+      context.fillText(`Aeye - ${new Date().toLocaleString('en-GB')}`, 10, 20);
       
       const link = document.createElement('a');
       link.download = `aeye-snapshot-${Date.now()}.jpg`;
@@ -560,7 +560,7 @@
                               $('#darkModeBtn').is(':visible');
         
         if (!buttonsVisible) {
-          console.log('Gumbi nisu vidljivi, prikazujem backup gumbe');
+          console.log('Buttons are not visible; showing fallback controls');
           $('#backup-buttons').show();
         }
       }, 2000);
@@ -623,7 +623,8 @@
     function toggleBoundingBoxes() {
       withBoxes = !withBoxes;
       const btn = document.getElementById('hideBoundingBoxesBtn');
-      btn.textContent = withBoxes ? 'Hide Box' : 'Show Box'; // Shortened text
+      btn.textContent = withBoxes ? 'Hide Box' : 'Show Box';
+      btn.setAttribute('aria-pressed', String(withBoxes));
     }
 
     window.addEventListener('beforeinstallprompt', (e) => {

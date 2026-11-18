@@ -45,7 +45,7 @@ window.aeyeAccessReady.catch(() => {});
     const content = document.getElementById('protectedContent');
     if (content) content.hidden = true;
     clearSession();
-    window.rejectAeyeAccess(new Error('Potrebna je prijava.'));
+    window.rejectAeyeAccess(new Error('Sign-in is required.'));
     location.replace('index.html');
   }
   if (page === 'login') {
@@ -55,7 +55,7 @@ window.aeyeAccessReady.catch(() => {});
       const input = document.getElementById('password');
       const current = today();
       if (input.value !== current.password) {
-        status.textContent = 'Lozinka nije ispravna.';
+        status.textContent = 'Incorrect password.';
         status.dataset.error = 'true';
         input.value = '';
         input.focus();
@@ -63,7 +63,7 @@ window.aeyeAccessReady.catch(() => {});
       }
       try { sessionStorage.setItem(sessionKey, current.date); }
       catch {
-        status.textContent = 'Omogućite pohranu podataka u pregledniku za prijavu.';
+        status.textContent = 'Allow browser storage to sign in.';
         status.dataset.error = 'true';
         return;
       }
